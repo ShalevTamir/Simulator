@@ -1,0 +1,198 @@
+[
+  {    
+    "ParameterName": "Altitude",
+    "MinValue": "0",
+    "MaxValue": "50000",
+    "CorrValue": "",
+    "Units": "Feet"
+  },
+  {
+    "ParameterName": "Longitude",
+    "MinValue": "-180",
+    "MaxValue": "180",
+    "CorrValue": "",
+    "Units": "Degrees"
+  },
+  {
+    "ParameterName": "Wind_Speed",
+    "MinValue": "0",
+    "MaxValue": "100",
+    "CorrValue": "",
+    "Units": "Knots"
+  },
+  {
+    "ParameterName": "Engine_Heat",
+    "MinValue": "0",
+    "MaxValue": "300",
+    "CorrValue": "4",
+    "Units": "Celsius"
+  },
+  {
+    "ParameterName": "Air_Pressure",
+    "MinValue": "800",
+    "MaxValue": "1100",
+    "CorrValue": "6",
+    "Units": "hPa"
+  },
+  {
+    "ParameterName": "Current_Thrust",
+    "MinValue": "0",
+    "MaxValue": "400",
+    "CorrValue": "1",
+    "Units": "kN"
+  },
+  {
+    "ParameterName": "Pitch_Angle",
+    "MinValue": "-20",
+    "MaxValue": "20",
+    "CorrValue": "0",
+    "Units": "Degrees"
+  },
+  {
+    "ParameterName": "Roll_Angle",
+    "MinValue": "-60",
+    "MaxValue": "60",
+    "CorrValue": "7",
+    "Units": "Degrees"
+  },
+  {
+    "ParameterName": "Fuel_Consumption",
+    "MinValue": "0",
+    "MaxValue": "100",
+    "CorrValue": "3",
+    "Units": "Liters"
+  },
+  {
+    "ParameterName": "Ground_Speed",
+    "MinValue": "0",
+    "MaxValue": "700",
+    "CorrValue": "6",
+    "Units": "Knots"
+  },
+  {
+    "ParameterName": "Vertical_Speed",
+    "MinValue": "-3000",
+    "MaxValue": "3000",
+    "CorrValue": "5",
+    "Units": "Feetperminute"
+  },
+  {
+    "ParameterName": "Tempreture",
+    "MinValue": "-50",
+    "MaxValue": "100",
+    "CorrValue": "4",
+    "Units": "Celsius"
+  },
+  {
+    "ParameterName": "G-Force",
+    "MinValue": "0",
+    "MaxValue": "5",
+    "CorrValue": "5",
+    "Units": "G"
+  },
+  {
+    "ParameterName": "Radio_Signal_Strength",
+    "MinValue": "-100",
+    "MaxValue": "0",
+    "CorrValue": "3",
+    "Units": "dBm"
+  },
+  {
+    "ParameterName": "GPS_Accuracy",
+    "MinValue": "0",
+    "MaxValue": "10",
+    "CorrValue": "2",
+    "Units": "Meters"
+  },
+  {
+    "ParameterName": "Oxygen_Level",
+    "MinValue": "0",
+    "MaxValue": "100",
+    "CorrValue": "1",
+    "Units": "%"
+  },
+  {
+    "ParameterName": "Flap_Position",
+    "MinValue": "0",
+    "MaxValue": "40",
+    "CorrValue": "6",
+    "Units": "Degrees"
+  },
+  {
+    "ParameterName": "Hydraulic_Pressure",
+    "MinValue": "0",
+    "MaxValue": "3000",
+    "CorrValue": "4",
+    "Units": "PSI"
+  },
+  {
+    "ParameterName": "Brake_Pressure",
+    "MinValue": "0",
+    "MaxValue": "2000",
+    "CorrValue": "2",
+    "Units": "Degrees"
+  },
+  {
+    "ParameterName": "Landing_Lights",
+    "MinValue": "0",
+    "MaxValue": "1",
+    "CorrValue": "1",
+    "Units": "On/Off"
+  },
+  {
+    "ParameterName": "Strobe_Lights",
+    "MinValue": "0",
+    "MaxValue": "1",
+    "CorrValue": "0",
+    "Units": "On/Off"
+  },
+  {
+    "ParameterName": "Beacon_Lights",
+    "MinValue": "0",
+    "MaxValue": "1",
+    "CorrValue": "1",
+    "Units": "On/Off"
+  },
+  {
+    "ParameterName": "Navigation_Lights",
+    "MinValue": "0",
+    "MaxValue": "1",
+    "CorrValue": "0",
+    "Units": "On/Off"
+  },
+  {
+    "ParameterName": "Anti_Collision_Lights",
+    "MinValue": "0",
+    "MaxValue": "1",
+    "CorrValue": "1",
+    "Units": "On/Off"
+  },
+  {
+    "ParameterName": "Wing_Lights",
+    "MinValue": "0",
+    "MaxValue": "1",
+    "CorrValue": "0",
+    "Units": "On/Off"
+  },
+  {
+    "ParameterName": "Cabin_Lights",
+    "MinValue": "0",
+    "MaxValue": "1",
+    "CorrValue": "1",
+    "Units": "On/Off"
+  },
+  {
+    "ParameterName": "Emergency_Lights",
+    "MinValue": "0",
+    "MaxValue": "1",
+    "CorrValue": "0",
+    "Units": "On/Off"
+  },
+  {    
+    "ParameterName": "Correlator",
+    "MinValue": "0",
+    "MaxValue": "7",
+    "CorrValue": "",
+    "Units": "PureNumber"
+  }
+]
