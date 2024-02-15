@@ -9,14 +9,14 @@
   {
     "ParameterName": "Longitude",
     "MinValue": "-180",
-    "MaxValue": "180",
+    "MaxValue": "0",
     "CorrValue": "",
     "Units": "Degrees"
   },
   {
     "ParameterName": "Wind_Speed",
-    "MinValue": "0",
-    "MaxValue": "100",
+    "MinValue": "177",
+    "MaxValue": "400",
     "CorrValue": "",
     "Units": "Knots"
   },
@@ -24,7 +24,7 @@
     "ParameterName": "Engine_Heat",
     "MinValue": "0",
     "MaxValue": "300",
-    "CorrValue": "4",
+    "CorrValue": "",
     "Units": "Celsius"
   },
   {
