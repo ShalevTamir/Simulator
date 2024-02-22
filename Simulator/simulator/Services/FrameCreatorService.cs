@@ -90,5 +90,10 @@ namespace Simulator.simulator.Services
                 return true;
             }
         }
+
+        public IEnumerable<TeleGenerationConditionDto> GetAllConditions()
+        {
+            return _teleGenerationConditions;
+        }
     }
 }
