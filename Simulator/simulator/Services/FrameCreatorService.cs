@@ -34,6 +34,8 @@ namespace Simulator.simulator.Services
             if(condition != null)
             {
                (minValue, maxValue) = condition.ApplyRestriction(minValue, maxValue);
+                //If top restriction exits, generate 1 bellow it, don't reach the restriction
+                maxValue -= condition.TopRestriction == null ? 0 : 1;
             }
             int randomValue = _random.Next(minValue, maxValue + 1);
             return new TelemetryParameterDto(icoParameter.ParameterName, randomValue.ToString(),icoParameter.Units);
