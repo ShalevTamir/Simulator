@@ -31,6 +31,7 @@ namespace Simulator
             services.AddSingleton<SimulatorService>();
             services.AddSingleton<JsonUtilsService>();
             services.AddSingleton<KafkaProducerService>();
+            services.AddHostedService<StartupService>();
             services.AddControllers();
         }
 
