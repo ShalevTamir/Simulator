@@ -30,7 +30,7 @@ namespace Simulator.simulator.Services
         {
             int minValue = int.Parse(icoParameter.MinValue);
             int maxValue = int.Parse(icoParameter.MaxValue);
-            var condition = getCondition(icoParameter.ParameterName);
+            var condition = GetCondition(icoParameter.ParameterName);
             if(condition != null)
             {
                (minValue, maxValue) = condition.ApplyRestriction(minValue, maxValue);
@@ -56,20 +56,20 @@ namespace Simulator.simulator.Services
             Debug.WriteLine($"correlator value {_correlatorService.CorrValue}");
             return new TelemetryFrameDTO(lstTeleParams);
         }
-        private bool conditionExists(string parameterName)
+        private bool ConditionExists(string parameterName)
         {
-            return getCondition(parameterName) != null;
+            return GetCondition(parameterName) != null;
         }
 
-        private TeleGenerationConditionDto? getCondition(string parameterName)
+        private TeleGenerationConditionDto? GetCondition(string parameterName)
         {
             var filteredCollection = _teleGenerationConditions.Where((value) => value.Name == parameterName);
             return filteredCollection.Any() ? filteredCollection.First() : null;
         }
 
-        public bool addGenerationCondition(TeleGenerationConditionDto condition)
+        public bool AddGenerationCondition(TeleGenerationConditionDto condition)
         {
-            if(conditionExists(condition.Name))
+            if(ConditionExists(condition.Name) || !_icdParameters.Any(parameter => parameter.ParameterName == condition.Name))
             {
                 return false;
             }
@@ -82,7 +82,7 @@ namespace Simulator.simulator.Services
 
         public bool removeGenerationCondition(string parameterName)
         {
-            if (!conditionExists(parameterName))
+            if (!ConditionExists(parameterName))
             {
                 return false;
             }

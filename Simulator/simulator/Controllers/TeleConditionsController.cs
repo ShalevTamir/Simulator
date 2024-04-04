@@ -20,7 +20,7 @@ namespace Simulator.simulator.Controllers
         [HttpPost("apply-condition")]
         public ActionResult ApplyTeleParameterCondition([FromBody] TeleGenerationConditionDto condition)
         {
-            var additionSuccessful = _frameCreatorService.addGenerationCondition(condition);
+            var additionSuccessful = _frameCreatorService.AddGenerationCondition(condition);
             if (additionSuccessful) return Ok();
             else return BadRequest("Condition with parameter " + condition.Name + "already exists");
         }
