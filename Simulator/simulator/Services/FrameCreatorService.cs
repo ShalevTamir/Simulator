@@ -30,14 +30,13 @@ namespace Simulator.simulator.Services
         {
             int minValue = int.Parse(icoParameter.MinValue);
             int maxValue = int.Parse(icoParameter.MaxValue);
-            var condition = GetCondition(icoParameter.ParameterName);
-            if(condition != null)
+            var conditions = GetConditions(icoParameter.ParameterName);
+            foreach (var condition in conditions)
             {
-               (minValue, maxValue) = condition.ApplyRestriction(minValue, maxValue);
-                //If top restriction exits, generate 1 bellow it, don't reach the restriction
+                (minValue, maxValue) = condition.ApplyRestriction(minValue, maxValue);
                 maxValue -= condition.TopRestriction == null ? 0 : 1;
             }
-            int randomValue = _random.Next(minValue, maxValue + 1);
+            int randomValue = minValue <= maxValue ? _random.Next(minValue, maxValue + 1) : 0;
             return new TelemetryParameterDto(icoParameter.ParameterName, randomValue.ToString(),icoParameter.Units);
         }
         public TelemetryFrameDTO ConvertIcdToFrame()
@@ -56,20 +55,20 @@ namespace Simulator.simulator.Services
             Debug.WriteLine($"correlator value {_correlatorService.CorrValue}");
             return new TelemetryFrameDTO(lstTeleParams);
         }
-        private bool ConditionExists(string parameterName)
+        private bool ConditionExists(int ID)
         {
-            return GetCondition(parameterName) != null;
+            return _teleGenerationConditions.Any(value => value.ID == ID);
         }
-
-        private TeleGenerationConditionDto? GetCondition(string parameterName)
+        private TeleGenerationConditionDto[] GetConditions(string parameterName)
         {
-            var filteredCollection = _teleGenerationConditions.Where((value) => value.Name == parameterName);
-            return filteredCollection.Any() ? filteredCollection.First() : null;
+            var filteredCollection = _teleGenerationConditions.Where((value) => string.Equals(value.Name, parameterName, StringComparison.OrdinalIgnoreCase));
+            return filteredCollection.ToArray();
+            //return filteredCollection.Any() ? filteredCollection.First() : null;
         }
 
         public bool AddGenerationCondition(TeleGenerationConditionDto condition)
         {
-            if(ConditionExists(condition.Name) || !_icdParameters.Any(parameter => parameter.ParameterName == condition.Name))
+            if(ConditionExists(condition.ID) || !_icdParameters.Any(parameter => string.Equals(parameter.ParameterName, condition.Name, StringComparison.OrdinalIgnoreCase)))
             {
                 return false;
             }
@@ -80,15 +79,15 @@ namespace Simulator.simulator.Services
             }
         }
 
-        public bool removeGenerationCondition(string parameterName)
+        public bool removeGenerationCondition(int ID)
         {
-            if (!ConditionExists(parameterName))
+            if (!ConditionExists(ID))
             {
                 return false;
             }
             else
             {
-                _teleGenerationConditions.RemoveAll((condition) => condition.Name == parameterName);
+                _teleGenerationConditions.RemoveAll((condition) => condition.ID == ID);
                 return true;
             }
         }

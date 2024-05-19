@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Simulator.simulator.Models.Dto;
 using Simulator.simulator.Services;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Simulator.simulator.Controllers
@@ -20,17 +21,18 @@ namespace Simulator.simulator.Controllers
         [HttpPost("apply-condition")]
         public ActionResult ApplyTeleParameterCondition([FromBody] TeleGenerationConditionDto condition)
         {
+            Debug.WriteLine("CONSTRAINT " + condition.ID + " " + condition.Name + " " + condition.TopRestriction + " " + condition.BottomRestriction);
             var additionSuccessful = _frameCreatorService.AddGenerationCondition(condition);
             if (additionSuccessful) return Ok();
-            else return BadRequest("Condition with parameter " + condition.Name + "already exists");
+            else return BadRequest("Invalid parameter name or condition with ID " + condition.ID + " already exists");
         }
 
         [HttpPost("remove-condition")]
-        public ActionResult RemoveParameterCondition([FromBody] string parameterName)
+        public ActionResult RemoveParameterCondition([FromBody] int ID)
         {
-            var removalSuccessful = _frameCreatorService.removeGenerationCondition(parameterName);
+            var removalSuccessful = _frameCreatorService.removeGenerationCondition(ID);
             if (removalSuccessful) return Ok();
-            else return BadRequest("Condition with parameter " + parameterName + " doesn't exist");
+            else return BadRequest("Condition with ID " + ID + " doesn't exist");
         }
 
         [HttpGet]
@@ -38,7 +40,7 @@ namespace Simulator.simulator.Controllers
         {
             return Ok(JsonConvert.SerializeObject(
                 _frameCreatorService.GetAllConditions()
-                .Select((teleParameter) => teleParameter.Name)
+                .Select((teleParameter) => teleParameter.ID)
                 ));
         }
     }
