@@ -36,7 +36,7 @@ namespace Simulator.simulator.Services
                 (minValue, maxValue) = condition.ApplyRestriction(minValue, maxValue);
                 maxValue -= condition.TopRestriction == null ? 0 : 1;
             }
-            int randomValue = minValue <= maxValue ? _random.Next(minValue, maxValue + 1) : 0;
+            int randomValue = minValue <= maxValue ? _random.Next(minValue, maxValue + 1) : int.Parse(icoParameter.MinValue);
             return new TelemetryParameterDto(icoParameter.ParameterName, randomValue.ToString(),icoParameter.Units);
         }
         public TelemetryFrameDTO ConvertIcdToFrame()
